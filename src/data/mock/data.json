@@ -1,0 +1,52 @@
+[
+    {
+      "projectName": "Ecommerce Website",
+      "clientName": "TechCorp",
+      "description": "Development of a comprehensive ecommerce platform for TechCorp"
+    },
+    {
+      "projectName": "Mobile Banking App",
+      "clientName": "BankSecure",
+      "description": "Creation of a secure and user-friendly mobile banking application for BankSecure"
+    },
+    {
+      "projectName": "Social Media Analytics",
+      "clientName": "MarketInsights",
+      "description": "Implementation of a social media analytics tool for MarketInsights to track and analyze engagement metrics"
+    },
+    {
+      "projectName": "Healthcare Portal",
+      "clientName": "HealthPlus",
+      "description": "Development of an online portal for HealthPlus to manage patient information and appointments"
+    },
+    {
+      "projectName": "Inventory Management System",
+      "clientName": "RetailGiant",
+      "description": "Creation of an inventory management system for RetailGiant to streamline stock management and ordering processes"
+    },
+    {
+      "projectName": "Learning Management System",
+      "clientName": "EduTech",
+      "description": "Development of an online learning management system for EduTech to facilitate remote education"
+    },
+    {
+      "projectName": "CRM System",
+      "clientName": "SalesForcePro",
+      "description": "Implementation of a customer relationship management system for SalesForcePro to enhance client interactions"
+    },
+    {
+      "projectName": "Online Travel Booking Platform",
+      "clientName": "TravelWorld",
+      "description": "Development of a comprehensive online travel booking platform for TravelWorld"
+    },
+    {
+      "projectName": "Real Estate Listing Portal",
+      "clientName": "PropertyLink",
+      "description": "Creation of a real estate listing portal for PropertyLink to connect buyers and sellers"
+    },
+    {
+      "projectName": "Fitness Tracking App",
+      "clientName": "FitLife",
+      "description": "Development of a mobile app for FitLife to track and analyze fitness activities and health metrics"
+    }
+  ]
