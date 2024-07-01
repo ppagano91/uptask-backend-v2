@@ -1,0 +1,81 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "MERN - UpTask-v2",
+    "collectionId": "6ec0a7e9-7526-4ef9-b3ea-5745d6fafc11",
+    "dateExported": "2024-07-01T18:27:56.278Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "c169b921-f0cd-44a7-9962-dac0f13c0884",
+            "colId": "6ec0a7e9-7526-4ef9-b3ea-5745d6fafc11",
+            "containerId": "",
+            "name": "Get All Projects",
+            "url": "http://localhost:4000/api/projects",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-07-01T14:57:41.457Z",
+            "modified": "2024-07-01T15:01:23.680Z",
+            "headers": []
+        },
+        {
+            "_id": "8b4546ef-4899-4e76-bf96-dbb73a2b3163",
+            "colId": "6ec0a7e9-7526-4ef9-b3ea-5745d6fafc11",
+            "containerId": "",
+            "name": "Create Project",
+            "url": "http://localhost:4000/api/projects",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-07-01T15:03:25.611Z",
+            "modified": "2024-07-01T18:25:37.714Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"projectName\": \"Ecommerce Website TEST\",\n  \"clientName\": \"TechCorp TEST\",\n  \"description\": \"Development of a comprehensive ecommerce platform for TechCorp TEST\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "1e4ecb35-9dd3-45e1-bc27-3b667ca24317",
+            "colId": "6ec0a7e9-7526-4ef9-b3ea-5745d6fafc11",
+            "containerId": "",
+            "name": "Get Project By Id",
+            "url": "http://localhost:4000/api/projects/6682f4a14151aa06a3819734",
+            "method": "GET",
+            "sortNum": 20000,
+            "created": "2024-07-01T18:05:10.568Z",
+            "modified": "2024-07-01T18:26:39.994Z",
+            "headers": []
+        },
+        {
+            "_id": "ba912408-873f-4c8e-9959-cd70fb943bfc",
+            "colId": "6ec0a7e9-7526-4ef9-b3ea-5745d6fafc11",
+            "containerId": "",
+            "name": "Update Project",
+            "url": "http://localhost:4000/api/projects/6682c949690cc37abb393f56",
+            "method": "PUT",
+            "sortNum": 30000,
+            "created": "2024-07-01T18:12:41.497Z",
+            "modified": "2024-07-01T18:17:45.937Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"projectName\": \"Ecommerce Website actualizado\",\n  \"clientName\": \"TechCorp\",\n  \"description\": \"Development of a comprehensive ecommerce platform for TechCorp\"\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "38c5ffbb-ec2b-48c5-b4f2-614dd1945718",
+            "colId": "6ec0a7e9-7526-4ef9-b3ea-5745d6fafc11",
+            "containerId": "",
+            "name": "Delete Project",
+            "url": "http://localhost:4000/api/projects/6682f4a14151aa06a3819734",
+            "method": "DELETE",
+            "sortNum": 30000,
+            "created": "2024-07-01T18:21:08.015Z",
+            "modified": "2024-07-01T18:26:51.271Z",
+            "headers": []
+        }
+    ],
+    "ref": "67OVAQpHhQuTxiSXz8aDMYae4LxU2IjaLApEM5z9Bez_p-moxXibwJOn6dm1DNt5CVtu-5ENzlNA51KCf_7G8A"
+}
