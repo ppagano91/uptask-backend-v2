@@ -4,7 +4,12 @@ import colors from "colors"
 
 export class ProjectController {
     static getAllProjects = async (req: Request, res: Response) => {
-        res.send("Todos los proyectos");
+        try {
+            const projects = await Project.find({});
+            res.json({projects});
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     static createProject = async (req: Request, res: Response) => {
@@ -13,7 +18,7 @@ export class ProjectController {
         try {
             // Otra opción: await Project.create(req.body);
             await project.save();
-            res.send("Proyecto creado correctamente")
+            res.json({"msg":"Proyecto creado correctamente"})
         } catch (error) {
             console.log(colors.red(error))
         }
