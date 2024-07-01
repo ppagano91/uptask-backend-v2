@@ -19,7 +19,18 @@ router.post("/",
         .notEmpty().withMessage("El nombre del Cliente es Obligatorio"),
     body("description")
         .notEmpty().withMessage("La descripción del Proyecto es Obligatorio"),
-        handleInputErrors,
+    handleInputErrors,
     ProjectController.createProject);
+
+router.put("/:id",
+    param("id").isMongoId().withMessage("ID no válido"),
+    body("projectName")
+        .notEmpty().withMessage("El nombre del Proyecto es Obligatorio"),
+    body("clientName")
+        .notEmpty().withMessage("El nombre del Cliente es Obligatorio"),
+    body("description")
+        .notEmpty().withMessage("La descripción del Proyecto es Obligatorio"),
+    handleInputErrors,
+    ProjectController.updateProject);
 
 export default router
