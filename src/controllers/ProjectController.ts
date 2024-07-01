@@ -12,6 +12,21 @@ export class ProjectController {
         }
     }
 
+    static getProjectById = async (req: Request, res: Response) => {
+        const { id } = req.params;
+        try {
+            const project = await Project.findById(id);
+
+            if(!project){
+                const error = new Error(`Proyecto con id=${id} no encontrado`)
+                return res.status(404).json({error: error.message})
+            }
+            res.json({project});
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     static createProject = async (req: Request, res: Response) => {
         const project = new Project(req.body);
 
