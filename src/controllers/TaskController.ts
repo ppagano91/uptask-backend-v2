@@ -12,8 +12,7 @@ export class TaskController {
 
             req.project.tasks.push(task.id);
 
-            await task.save();
-            await req.project.save();
+            await Promise.allSettled([task.save(), req.project.save()]);
             res.json({"msg":"Tarea creada correctamente"})
         } catch (error) {
             console.log(colors.red(error))
