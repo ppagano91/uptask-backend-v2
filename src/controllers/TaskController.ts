@@ -57,6 +57,32 @@ export class TaskController {
 
         }
     }
+
+    static updateTask = async (req: Request, res: Response) => {
+
+        const { taskId } = req.params;
+
+        try {
+            const task = await Task.findByIdAndUpdate(taskId, req.body);
+
+            if(!task){
+                const error = new Error(`Tarea con id=${taskId} no encontrada`);
+                res.status(404).json({msg: error.message, error: true});
+            }
+
+            if(task.project.toString() !== req.project.id){
+                const error = new Error(`Acción no válida`);
+                res.status(400).json({msg: error.message, error: true});
+            }
+
+            res.json({"msg": `Tarea con id=${taskId} actualizada`});
+
+        } catch (error) {
+            console.log(colors.red(error));
+            res.status(500).json({"msg": error});
+
+        }
+    }
 }
 
 export default TaskController;
