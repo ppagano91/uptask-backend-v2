@@ -1,52 +1,222 @@
 [
-    {
-      "projectName": "Ecommerce Website",
-      "clientName": "TechCorp",
-      "description": "Development of a comprehensive ecommerce platform for TechCorp"
-    },
-    {
-      "projectName": "Mobile Banking App",
-      "clientName": "BankSecure",
-      "description": "Creation of a secure and user-friendly mobile banking application for BankSecure"
-    },
-    {
-      "projectName": "Social Media Analytics",
-      "clientName": "MarketInsights",
-      "description": "Implementation of a social media analytics tool for MarketInsights to track and analyze engagement metrics"
-    },
-    {
-      "projectName": "Healthcare Portal",
-      "clientName": "HealthPlus",
-      "description": "Development of an online portal for HealthPlus to manage patient information and appointments"
-    },
-    {
-      "projectName": "Inventory Management System",
-      "clientName": "RetailGiant",
-      "description": "Creation of an inventory management system for RetailGiant to streamline stock management and ordering processes"
-    },
-    {
-      "projectName": "Learning Management System",
-      "clientName": "EduTech",
-      "description": "Development of an online learning management system for EduTech to facilitate remote education"
-    },
-    {
-      "projectName": "CRM System",
-      "clientName": "SalesForcePro",
-      "description": "Implementation of a customer relationship management system for SalesForcePro to enhance client interactions"
-    },
-    {
-      "projectName": "Online Travel Booking Platform",
-      "clientName": "TravelWorld",
-      "description": "Development of a comprehensive online travel booking platform for TravelWorld"
-    },
-    {
-      "projectName": "Real Estate Listing Portal",
-      "clientName": "PropertyLink",
-      "description": "Creation of a real estate listing portal for PropertyLink to connect buyers and sellers"
-    },
-    {
-      "projectName": "Fitness Tracking App",
-      "clientName": "FitLife",
-      "description": "Development of a mobile app for FitLife to track and analyze fitness activities and health metrics"
-    }
-  ]
+  {
+    "projectName": "Ecommerce Website",
+    "clientName": "TechCorp",
+    "description": "Development of a comprehensive ecommerce platform for TechCorp",
+    "tasks": [
+      {
+        "name": "Design Website Layout",
+        "description": "Create the initial design for the ecommerce website",
+        "status": "inProgress"
+      },
+      {
+        "name": "Develop Backend API",
+        "description": "Set up the backend services for the ecommerce platform",
+        "status": "pending"
+      },
+      {
+        "name": "Implement Payment Gateway",
+        "description": "Integrate payment gateway for transactions",
+        "status": "onHold"
+      }
+    ]
+  },
+  {
+    "projectName": "Mobile Banking App",
+    "clientName": "BankSecure",
+    "description": "Creation of a secure and user-friendly mobile banking application for BankSecure",
+    "tasks": [
+      {
+        "name": "Design User Interface",
+        "description": "Create wireframes and design the UI for the app",
+        "status": "underReview"
+      },
+      {
+        "name": "Develop Mobile App",
+        "description": "Develop the core functionalities of the mobile banking app",
+        "status": "inProgress"
+      },
+      {
+        "name": "Test Security Features",
+        "description": "Conduct thorough testing of the app's security features",
+        "status": "pending"
+      }
+    ]
+  },
+  {
+    "projectName": "Social Media Analytics",
+    "clientName": "MarketInsights",
+    "description": "Implementation of a social media analytics tool for MarketInsights to track and analyze engagement metrics",
+    "tasks": [
+      {
+        "name": "Collect Requirements",
+        "description": "Gather requirements from the client for the analytics tool",
+        "status": "completed"
+      },
+      {
+        "name": "Develop Data Ingestion Pipeline",
+        "description": "Set up the pipeline for ingesting social media data",
+        "status": "inProgress"
+      },
+      {
+        "name": "Create Dashboards",
+        "description": "Develop dashboards for visualizing social media metrics",
+        "status": "underReview"
+      }
+    ]
+  },
+  {
+    "projectName": "Healthcare Portal",
+    "clientName": "HealthPlus",
+    "description": "Development of an online portal for HealthPlus to manage patient information and appointments",
+    "tasks": [
+      {
+        "name": "Design Patient Portal",
+        "description": "Create the design for the patient portal",
+        "status": "pending"
+      },
+      {
+        "name": "Develop Appointment Scheduling",
+        "description": "Implement the appointment scheduling feature",
+        "status": "inProgress"
+      },
+      {
+        "name": "Test Portal Functionality",
+        "description": "Test all functionalities of the healthcare portal",
+        "status": "onHold"
+      }
+    ]
+  },
+  {
+    "projectName": "Inventory Management System",
+    "clientName": "RetailGiant",
+    "description": "Creation of an inventory management system for RetailGiant to streamline stock management and ordering processes",
+    "tasks": [
+      {
+        "name": "Analyze Inventory Needs",
+        "description": "Conduct analysis of the inventory needs of RetailGiant",
+        "status": "completed"
+      },
+      {
+        "name": "Develop Inventory Tracking",
+        "description": "Implement the inventory tracking feature",
+        "status": "underReview"
+      },
+      {
+        "name": "Integrate with Ordering System",
+        "description": "Integrate the inventory system with the ordering system",
+        "status": "inProgress"
+      }
+    ]
+  },
+  {
+    "projectName": "Learning Management System",
+    "clientName": "EduTech",
+    "description": "Development of an online learning management system for EduTech to facilitate remote education",
+    "tasks": [
+      {
+        "name": "Define Course Structure",
+        "description": "Define the structure and content of the courses",
+        "status": "pending"
+      },
+      {
+        "name": "Develop Learning Modules",
+        "description": "Create the learning modules for the system",
+        "status": "inProgress"
+      },
+      {
+        "name": "Implement Student Tracking",
+        "description": "Develop the feature to track student progress",
+        "status": "underReview"
+      }
+    ]
+  },
+  {
+    "projectName": "CRM System",
+    "clientName": "SalesForcePro",
+    "description": "Implementation of a customer relationship management system for SalesForcePro to enhance client interactions",
+    "tasks": [
+      {
+        "name": "Gather Client Requirements",
+        "description": "Collect detailed requirements from the client",
+        "status": "completed"
+      },
+      {
+        "name": "Develop CRM Features",
+        "description": "Develop the core features of the CRM system",
+        "status": "inProgress"
+      },
+      {
+        "name": "Test CRM System",
+        "description": "Test all functionalities of the CRM system",
+        "status": "onHold"
+      }
+    ]
+  },
+  {
+    "projectName": "Online Travel Booking Platform",
+    "clientName": "TravelWorld",
+    "description": "Development of a comprehensive online travel booking platform for TravelWorld",
+    "tasks": [
+      {
+        "name": "Design Booking Interface",
+        "description": "Create the design for the travel booking interface",
+        "status": "pending"
+      },
+      {
+        "name": "Develop Search Functionality",
+        "description": "Implement the search functionality for travel options",
+        "status": "inProgress"
+      },
+      {
+        "name": "Integrate Payment System",
+        "description": "Integrate the payment system for booking transactions",
+        "status": "underReview"
+      }
+    ]
+  },
+  {
+    "projectName": "Real Estate Listing Portal",
+    "clientName": "PropertyLink",
+    "description": "Creation of a real estate listing portal for PropertyLink to connect buyers and sellers",
+    "tasks": [
+      {
+        "name": "Define Listing Categories",
+        "description": "Define the categories for real estate listings",
+        "status": "completed"
+      },
+      {
+        "name": "Develop Listing Features",
+        "description": "Create the features for listing properties",
+        "status": "inProgress"
+      },
+      {
+        "name": "Implement Search and Filter",
+        "description": "Develop the search and filter functionality for listings",
+        "status": "onHold"
+      }
+    ]
+  },
+  {
+    "projectName": "Fitness Tracking App",
+    "clientName": "FitLife",
+    "description": "Development of a mobile app for FitLife to track and analyze fitness activities and health metrics",
+    "tasks": [
+      {
+        "name": "Design App Interface",
+        "description": "Create the design for the fitness tracking app",
+        "status": "pending"
+      },
+      {
+        "name": "Develop Tracking Features",
+        "description": "Implement the features to track fitness activities",
+        "status": "inProgress"
+      },
+      {
+        "name": "Test Health Metrics",
+        "description": "Test the accuracy of health metrics tracking",
+        "status": "underReview"
+      }
+    ]
+  }
+]
