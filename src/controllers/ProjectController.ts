@@ -9,6 +9,7 @@ export class ProjectController {
             res.json({projects});
         } catch (error) {
             console.log(error);
+            res.status(500).json({"msg": error});
         }
     }
 
@@ -24,6 +25,7 @@ export class ProjectController {
             res.json({project});
         } catch (error) {
             console.log(error);
+            res.status(500).json({"msg": error});
         }
     }
 
@@ -35,7 +37,8 @@ export class ProjectController {
             await project.save();
             res.json({"msg":"Proyecto creado correctamente"})
         } catch (error) {
-            console.log(colors.red(error))
+            console.log(colors.red(error));
+            res.status(500).json({"msg": error});
         }
     }
 
@@ -53,6 +56,7 @@ export class ProjectController {
             res.json({"msg": `Proyecto con id=${id} actualizado`});
         } catch (error) {
             console.log(error);
+            res.status(500).json({"msg": error});
         }
     }
 
@@ -70,6 +74,7 @@ export class ProjectController {
             res.json({"msg": `Proyecto con id=${id} fue eliminado`});
         } catch (error) {
             console.log(error);
+            res.status(500).json({"msg": error});
         }
     }
 }
