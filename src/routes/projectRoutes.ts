@@ -42,7 +42,7 @@ router.delete("/:id",
 
 
 router.post("/:projectId/task",
-    param("id").isMongoId().withMessage("ID no válido"),
+    param("projectId").isMongoId().withMessage("ID no válido"),
     validateProjectExists,
     body("name")
         .notEmpty().withMessage("El nombre de la Tarea es Obligatorio"),
@@ -52,7 +52,14 @@ router.post("/:projectId/task",
     TaskController.createTask);
 
 router.get("/:projectId/tasks",
+    param("projectId").isMongoId().withMessage("ID no válido"),
     validateProjectExists,
     TaskController.getAllTasksByProject);
+
+router.get("/:projectId/task/:taskId",
+    param("projectId").isMongoId().withMessage("ID de Proyecto no válido"),
+    param("taskId").isMongoId().withMessage("ID de Tarea no válido"),
+    validateProjectExists,
+    TaskController.getTaskById);
 
 export default router
