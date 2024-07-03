@@ -27,3 +27,15 @@ export async function validateTaskExists(req: Request, res: Response, next: Next
         res.status(500).json({"msg": error.message, "error": true})
     }
 }
+
+export function taskBelongsToProject(req: Request, res: Response, next: NextFunction){
+    try {
+        if(req.task.project.toString() !== req.project.id.toString()){
+            const error = new Error(`Acción no válida`);
+            return res.status(400).json({msg: error.message, error: true});
+        }
+        next();
+    } catch (error) {
+        res.status(500).json({"msg": error.message, "error": true})
+    }
+}

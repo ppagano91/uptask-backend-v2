@@ -35,11 +35,6 @@ export class TaskController {
     static getTaskById = async (req: Request, res: Response) => {
 
         try {
-            if(req.task.project.toString() !== req.project.id){
-                const error = new Error(`Acción no válida`);
-                return res.status(400).json({msg: error.message, error: true});
-            }
-
             if(req.task) res.status(200).json({task: req.task});
 
         } catch (error) {
@@ -52,11 +47,6 @@ export class TaskController {
     static updateTask = async (req: Request, res: Response) => {
 
         try {
-            if(req.task.project.toString() !== req.project.id){
-                const error = new Error(`Acción no válida`);
-                return res.status(400).json({msg: error.message, error: true});
-            }
-
             req.task.name = req.body.name;
             req.task.description = req.body.description;
             await req.task.save()
@@ -72,10 +62,6 @@ export class TaskController {
 
     static deleteTask = async (req: Request, res: Response) => {
         try {
-            if(req.task.project.toString() !== req.project.id){
-                const error = new Error(`Acción no válida`);
-                return res.status(400).json({msg: error.message, error: true});
-            }
             req.project.tasks = req.project.tasks.filter( task => task.toString() !== req.task.id.toString());
 
             await Promise.allSettled([req.task.deleteOne(), req.project.save()]);
@@ -93,11 +79,6 @@ export class TaskController {
         const { status } = req.body;
 
         try {
-            if(req.task.project.toString() !== req.project.id){
-                const error = new Error(`Acción no válida`);
-                return res.status(400).json({msg: error.message, error: true});
-            }
-
             req.task.status = status;
 
             await req.task.save();

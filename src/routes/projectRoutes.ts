@@ -4,7 +4,7 @@ import { ProjectController } from "../controllers/ProjectController";
 import { handleInputErrors } from "../middleware/validation";
 import TaskController from "../controllers/TaskController";
 import { validateProjectExists } from "../middleware/project";
-import { validateTaskExists } from "../middleware/task";
+import { taskBelongsToProject, validateTaskExists } from "../middleware/task";
 
 const router = Router();
 
@@ -56,15 +56,17 @@ router.get("/:projectId/tasks",
     TaskController.getAllTasksByProject);
 
 
-    
-// Forma de Generalizar el middleware
+// TODO: Agregar handleInputErrors después del express-validator
 // router.param("taskId", param("taskId").isMongoId().withMessage("ID de Tarea no válido"));
+// Forma de Generalizar el middleware
 // router.param("taskId", validateTaskExists);
+// router.param("taskId", taskBelongsToProject);
 
 router.get("/:projectId/task/:taskId",
     param("taskId").isMongoId().withMessage("ID de Tarea no válido"),
     handleInputErrors,
     validateTaskExists,
+    taskBelongsToProject,
     TaskController.getTaskById);
 
 router.put("/:projectId/task/:taskId",
@@ -75,12 +77,14 @@ router.put("/:projectId/task/:taskId",
         .notEmpty().withMessage("La descripción de la Tarea es Obligatorio"),
     handleInputErrors,
     validateTaskExists,
+    taskBelongsToProject,
     TaskController.updateTask);
 
 router.delete("/:projectId/task/:taskId",
     param("taskId").isMongoId().withMessage("ID de Tarea no válido"),
     handleInputErrors,
     validateTaskExists,
+    taskBelongsToProject,
     TaskController.deleteTask);
 
 router.post("/:projectId/task/:taskId/status",
@@ -89,6 +93,7 @@ router.post("/:projectId/task/:taskId/status",
         .notEmpty().withMessage("El Estado de la Tarea es Obligatorio"),
     handleInputErrors,
     validateTaskExists,
+    taskBelongsToProject,
     TaskController.updateStatus);
 
 export default router
