@@ -34,23 +34,13 @@ export class TaskController {
 
     static getTaskById = async (req: Request, res: Response) => {
 
-        const { taskId } = req.params;
-
         try {
-            const task = await Task.findById(taskId);
-
-            if(!task){
-                const error = new Error(`Tarea con id=${taskId} no encontrada`);
-                return res.status(404).json({msg: error.message, error: true});
-                
-            }
-
-            if(task.project.toString() !== req.project.id){
+            if(req.task.project.toString() !== req.project.id){
                 const error = new Error(`Acción no válida`);
                 return res.status(400).json({msg: error.message, error: true});
             }
 
-            if(task) res.status(200).json({task});
+            if(req.task) res.status(200).json({task: req.task});
 
         } catch (error) {
             console.log(colors.red(error));
@@ -61,26 +51,17 @@ export class TaskController {
 
     static updateTask = async (req: Request, res: Response) => {
 
-        const { taskId } = req.params;
-
         try {
-            const task = await Task.findById(taskId);
-
-            if(!task){
-                const error = new Error(`Tarea con id=${taskId} no encontrada`);
-                return res.status(404).json({msg: error.message, error: true});
-            }
-
-            if(task.project.toString() !== req.project.id){
+            if(req.task.project.toString() !== req.project.id){
                 const error = new Error(`Acción no válida`);
                 return res.status(400).json({msg: error.message, error: true});
             }
 
-            task.name = req.body.name;
-            task.description = req.body.description;
-            await task.save()
+            req.task.name = req.body.name;
+            req.task.description = req.body.description;
+            await req.task.save()
 
-            res.json({"msg": `Tarea con id=${taskId} actualizada`});
+            res.json({"msg": `Tarea con id=${req.task.id} actualizada`});
 
         } catch (error) {
             console.log(colors.red(error));
@@ -90,26 +71,16 @@ export class TaskController {
     }
 
     static deleteTask = async (req: Request, res: Response) => {
-
-        const { taskId } = req.params;
-
         try {
-            const task = await Task.findById(taskId);
-
-            if(!task){
-                const error = new Error(`Tarea con id=${taskId} no encontrada`);
-                return res.status(404).json({msg: error.message, error: true});
-            }
-
-            if(task.project.toString() !== req.project.id){
+            if(req.task.project.toString() !== req.project.id){
                 const error = new Error(`Acción no válida`);
                 return res.status(400).json({msg: error.message, error: true});
             }
-            req.project.tasks = req.project.tasks.filter( task => task.toString() !== taskId);
+            req.project.tasks = req.project.tasks.filter( task => task.toString() !== req.task.id.toString());
 
-            await Promise.allSettled([task.deleteOne(), req.project.save()]);
+            await Promise.allSettled([req.task.deleteOne(), req.project.save()]);
 
-            res.status(200).json({msg: `Tarea con id=${taskId} fue eliminada`});
+            res.status(200).json({msg: `Tarea con id=${req.task.id} fue eliminada`});
 
         } catch (error) {
             console.log(colors.red(error));
@@ -119,26 +90,17 @@ export class TaskController {
     }
 
     static updateStatus = async (req: Request, res: Response) => {
-
-        const { taskId } = req.params;
         const { status } = req.body;
 
         try {
-            const task = await Task.findById(taskId);
-
-            if(!task){
-                const error = new Error(`Tarea con id=${taskId} no encontrada`);
-                return res.status(404).json({msg: error.message, error: true});
-            }
-
-            if(task.project.toString() !== req.project.id){
+            if(req.task.project.toString() !== req.project.id){
                 const error = new Error(`Acción no válida`);
                 return res.status(400).json({msg: error.message, error: true});
             }
 
-            task.status = status;
+            req.task.status = status;
 
-            await task.save();
+            await req.task.save();
 
             res.status(200).json({msg: `Estado de Tarea actualizado`});
 

@@ -4,6 +4,7 @@ import { ProjectController } from "../controllers/ProjectController";
 import { handleInputErrors } from "../middleware/validation";
 import TaskController from "../controllers/TaskController";
 import { validateProjectExists } from "../middleware/project";
+import { validateTaskExists } from "../middleware/task";
 
 const router = Router();
 
@@ -40,7 +41,7 @@ router.delete("/:id",
     handleInputErrors,
     ProjectController.deleteProjectById);
 
-router.param("projectId", param("projectId").isMongoId().withMessage("ID no válido"));
+router.param("projectId", param("projectId").isMongoId().withMessage("ID de Proyecto no válido"));
 router.param("projectId", validateProjectExists);
 
 router.post("/:projectId/task",
@@ -54,8 +55,16 @@ router.post("/:projectId/task",
 router.get("/:projectId/tasks",
     TaskController.getAllTasksByProject);
 
+
+    
+// Forma de Generalizar el middleware
+// router.param("taskId", param("taskId").isMongoId().withMessage("ID de Tarea no válido"));
+// router.param("taskId", validateTaskExists);
+
 router.get("/:projectId/task/:taskId",
     param("taskId").isMongoId().withMessage("ID de Tarea no válido"),
+    handleInputErrors,
+    validateTaskExists,
     TaskController.getTaskById);
 
 router.put("/:projectId/task/:taskId",
@@ -65,10 +74,13 @@ router.put("/:projectId/task/:taskId",
     body("description")
         .notEmpty().withMessage("La descripción de la Tarea es Obligatorio"),
     handleInputErrors,
+    validateTaskExists,
     TaskController.updateTask);
 
 router.delete("/:projectId/task/:taskId",
     param("taskId").isMongoId().withMessage("ID de Tarea no válido"),
+    handleInputErrors,
+    validateTaskExists,
     TaskController.deleteTask);
 
 router.post("/:projectId/task/:taskId/status",
@@ -76,6 +88,7 @@ router.post("/:projectId/task/:taskId/status",
     body("status")
         .notEmpty().withMessage("El Estado de la Tarea es Obligatorio"),
     handleInputErrors,
+    validateTaskExists,
     TaskController.updateStatus);
 
 export default router
