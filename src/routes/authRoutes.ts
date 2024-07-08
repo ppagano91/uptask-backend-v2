@@ -22,4 +22,9 @@ router.post("/create-account",
     handleInputErrors,
     AuthController.createAccount)
 
+router.post("/confirm-account",
+    body("token").notEmpty().withMessage("El token es obligatorio"),
+    handleInputErrors,
+    AuthController.confirmAccount
+)
 export default router;
