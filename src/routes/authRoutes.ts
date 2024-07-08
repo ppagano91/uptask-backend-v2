@@ -27,4 +27,15 @@ router.post("/confirm-account",
     handleInputErrors,
     AuthController.confirmAccount
 )
+
+router.post("/login",
+    body("email").isEmail().withMessage("El formato de email no es válido"),
+    handleInputErrors,
+    body("password")
+        .notEmpty()
+        .withMessage("El password es obligatorio"),
+    AuthController.login
+)
+
+
 export default router;

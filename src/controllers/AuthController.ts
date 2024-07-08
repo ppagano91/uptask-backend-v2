@@ -1,7 +1,7 @@
 import type { Request, Response } from "express"
 
 import User from "../models/User";
-import { hashPassword } from "../utils/auth";
+import { checkPassword, hashPassword } from "../utils/auth";
 import Token from "../models/Token";
 import { generateToken } from "../utils/token";
 import { AuthEmail } from "../emails/AuthEmail";
@@ -61,6 +61,46 @@ export class AuthController {
         } catch (error) {
             console.log(error.message);
             res.status(500).json({"msg": error});
+        }
+    }
+
+    static login = async (req: Request, res: Response) => {
+        try {
+            const { email, password } = req.body;
+            const user = await User.findOne({email});
+
+            if(!user){
+                const error = new Error(`No existe usuario registrado con el email: ${email}.`);
+                res.status(404).json({msg: error.message, error: true})
+            };
+
+            if(!user.confirmed){
+                const token = new Token();
+                token.user = user.id
+
+                token.token = generateToken();
+                await token.save();
+
+                AuthEmail.sendConfirmationMail({
+                    email: user.email,
+                    name: user.name,
+                    token: token.token
+                });
+
+                const error = new Error(`La cuenta no ha sido confirmada. Revisa tu email, hemos enviado un mail de confirmación de cuenta.`);
+                res.status(401).json({msg: error.message, error: true})
+            }
+
+            const isPasswordCorrect = await checkPassword(password, user.password);
+
+            if(!isPasswordCorrect){
+                const error = new Error(`El password ingresado es incorrecto.`);
+                res.status(401).json({msg: error.message, error: true})
+            }
+
+            res.json({msg: "Usuario autenticado correctamente"})
+        } catch (error) {
+            
         }
     }
 }
