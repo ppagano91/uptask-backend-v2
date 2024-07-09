@@ -30,11 +30,17 @@ router.post("/confirm-account",
 
 router.post("/login",
     body("email").isEmail().withMessage("El formato de email no es válido"),
-    handleInputErrors,
     body("password")
-        .notEmpty()
-        .withMessage("El password es obligatorio"),
+    .notEmpty()
+    .withMessage("El password es obligatorio"),
+    handleInputErrors,
     AuthController.login
+)
+
+router.post("/request-code",
+    body("email").isEmail().withMessage("El formato de email no es válido"),
+    handleInputErrors,
+    AuthController.requestConfirmationCode
 )
 
 
