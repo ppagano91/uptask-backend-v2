@@ -138,4 +138,34 @@ export class AuthController {
             res.status(500).json({"msg": error});
         }
     }
+
+    static forgotPassword = async (req: Request, res: Response) => {
+        try {
+            const { email } = req.body;
+
+            const user = await User.findOne({email});
+            if(!user){
+                const error = new Error("El usuario no está registrado");
+                return res.status(404).json({message: error.message, error: true})
+            }
+
+            // Generar Token
+            const token = new Token();
+            token.token = generateToken();
+            token.user = user.id;
+            await token.save();
+
+            // Envío de mail
+            AuthEmail.sendPasswordResetToken({
+                email: user.email,
+                name: user.name,
+                token: token.token
+            })
+
+            res.json({msg: "Revisa tu e-mail para seguir las instrucciones"});
+        } catch (error) {
+            console.log(error.message);
+            res.status(500).json({"msg": error});
+        }
+    }
 }

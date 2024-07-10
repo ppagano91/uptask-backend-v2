@@ -43,5 +43,11 @@ router.post("/request-code",
     AuthController.requestConfirmationCode
 )
 
+router.post("/forgot-password",
+    body("email").isEmail().withMessage("El formato de email no es válido"),
+    handleInputErrors,
+    AuthController.forgotPassword
+)
+
 
 export default router;
