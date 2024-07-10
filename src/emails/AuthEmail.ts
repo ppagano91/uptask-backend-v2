@@ -134,7 +134,7 @@ export class AuthEmail {
                     .timer {
                         height: 8px;
                         background: #4caf50;
-                        animation: countdown 900s linear;
+                        animation: countdown 600s linear;
                         animation-fill-mode: forwards;
                         margin-top: 10px;
                         border-radius: 4px;
@@ -151,7 +151,7 @@ export class AuthEmail {
                     <p>Has solicitado reestablecer tu password. Para completar el proceso, por favor visita el siguiente enlace:</p>
                     <a class="link-btn" href="${process.env.FRONTEND_URL}/auth/new-password">Reestablecer Password</a>
                     <p>Ingresa el código: <b>${user.token}</b></p>
-                    <p>Este token expira en 15 minutos.</p>
+                    <p>Este token expira en 10 minutos.</p>
                     <div class="timer"></div>
                 </div>
             </body>

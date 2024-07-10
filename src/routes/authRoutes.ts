@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { AuthController } from "../controllers/AuthController";
-import { body } from "express-validator";
+import { body, param } from "express-validator";
 import { handleInputErrors } from "../middleware/validation";
 
 const router = Router();
@@ -49,5 +49,28 @@ router.post("/forgot-password",
     AuthController.forgotPassword
 )
 
+router.post("/validate-token",
+    body("token")
+        .notEmpty().withMessage("El token es obligatorio"),
+    handleInputErrors,
+    AuthController.validateToken
+)
+
+router.post("/update-password/:token",
+    param("token").isNumeric().withMessage("Token no válido"),
+    body("password")
+        .notEmpty()
+        .withMessage("El password es obligatorio")
+        .isLength({min: 8})
+        .withMessage("Mínimo 8 caracteres"),
+    body("password_confirmation").custom((value, {req}) => {
+        if(value !== req.body.password){
+            throw new Error("Los passwords no coinciden");
+        }
+        return true;
+    }),
+    handleInputErrors,
+    AuthController.updatePasswordWithToken
+)
 
 export default router;
