@@ -209,4 +209,12 @@ export class AuthController {
             res.status(500).json({"msg": error});
         }
     }
+
+    static user = async (req: Request, res: Response) => {
+        try {
+            return res.json({user: req.user})
+        } catch (error) {
+            res.status(500).json({"msg": error});
+        }
+    }
 }
