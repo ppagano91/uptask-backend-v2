@@ -9,7 +9,9 @@ import { authenticate } from "../middleware/auth";
 
 const router = Router();
 
-router.get("/", ProjectController.getAllProjects);
+router.use(authenticate);
+
+router.get("/", authenticate, ProjectController.getAllProjects);
 
 router.get("/:id",
     param("id").isMongoId().withMessage("ID no válido"),
@@ -17,7 +19,6 @@ router.get("/:id",
     ProjectController.getProjectById);
 
 router.post("/",
-    authenticate,
     body("projectName")
         .notEmpty().withMessage("El nombre del Proyecto es Obligatorio"),
     body("clientName")
