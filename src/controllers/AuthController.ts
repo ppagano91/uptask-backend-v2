@@ -5,6 +5,7 @@ import { checkPassword, hashPassword } from "../utils/auth";
 import Token from "../models/Token";
 import { generateToken } from "../utils/token";
 import { AuthEmail } from "../emails/AuthEmail";
+import { generateJWT } from "../utils/jwt";
 
 export class AuthController {
     static createAccount = async (req: Request, res: Response) => {
@@ -97,7 +98,9 @@ export class AuthController {
                 return res.status(401).json({message: error.message, error: true})
             }
 
-            res.json({msg: "Usuario autenticado correctamente"})
+            const token = generateJWT({id: user.id});
+
+            res.json({msg: "Usuario autenticado correctamente", token: token})
         } catch (error) {
             res.status(500).json({"msg": error});
         }

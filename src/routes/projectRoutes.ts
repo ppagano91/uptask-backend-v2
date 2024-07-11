@@ -5,6 +5,7 @@ import { handleInputErrors } from "../middleware/validation";
 import TaskController from "../controllers/TaskController";
 import { validateProjectExists } from "../middleware/project";
 import { taskBelongsToProject, validateTaskExists } from "../middleware/task";
+import { authenticate } from "../middleware/auth";
 
 const router = Router();
 
@@ -16,6 +17,7 @@ router.get("/:id",
     ProjectController.getProjectById);
 
 router.post("/",
+    authenticate,
     body("projectName")
         .notEmpty().withMessage("El nombre del Proyecto es Obligatorio"),
     body("clientName")
