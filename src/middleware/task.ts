@@ -39,3 +39,15 @@ export function taskBelongsToProject(req: Request, res: Response, next: NextFunc
         res.status(500).json({"msg": error.message, "error": true})
     }
 }
+
+export function hasAuthorization(req: Request, res: Response, next: NextFunction){
+    try {
+        if(req.user.id.toString() !== req.project.manager.toString()){
+            const error = new Error(`Acción no válida`);
+            return res.status(400).json({msg: error.message, error: true});
+        }
+        next();
+    } catch (error) {
+        res.status(500).json({"msg": error.message, "error": true})
+    }
+}

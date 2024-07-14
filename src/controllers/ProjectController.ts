@@ -9,6 +9,9 @@ export class ProjectController {
                 $or: [
                     {
                         manager: {$in: req.user.id}
+                    },
+                    {
+                        team: {$in: req.user.id}
                     }
                 ]
             });
@@ -29,7 +32,7 @@ export class ProjectController {
                 return res.status(404).json({error: error.message})
             }
             
-            if(project.manager.toString() !== req.user.id.toString()){
+            if(project.manager.toString() !== req.user.id.toString() && !project.team.includes(req.user.id)){
                 const error = new Error(`Acción no válida`)
                 return res.status(401).json({error: error.message})
             }

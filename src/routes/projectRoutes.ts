@@ -4,7 +4,7 @@ import { ProjectController } from "../controllers/ProjectController";
 import { handleInputErrors } from "../middleware/validation";
 import TaskController from "../controllers/TaskController";
 import { validateProjectExists } from "../middleware/project";
-import { taskBelongsToProject, validateTaskExists } from "../middleware/task";
+import { hasAuthorization, taskBelongsToProject, validateTaskExists } from "../middleware/task";
 import { authenticate } from "../middleware/auth";
 import { TeamMemberController } from "../controllers/TeamController";
 
@@ -49,6 +49,7 @@ router.param("projectId", param("projectId").isMongoId().withMessage("ID de Proy
 router.param("projectId", validateProjectExists);
 
 router.post("/:projectId/task",
+    hasAuthorization,
     body("name")
         .notEmpty().withMessage("El nombre de la Tarea es Obligatorio"),
     body("description")
@@ -74,6 +75,7 @@ router.get("/:projectId/task/:taskId",
     TaskController.getTaskById);
 
 router.put("/:projectId/task/:taskId",
+    hasAuthorization,
     param("taskId").isMongoId().withMessage("ID de Tarea no válido"),
     body("name")
         .notEmpty().withMessage("El nombre de la Tarea es Obligatorio"),
@@ -85,6 +87,7 @@ router.put("/:projectId/task/:taskId",
     TaskController.updateTask);
 
 router.delete("/:projectId/task/:taskId",
+    hasAuthorization,
     param("taskId").isMongoId().withMessage("ID de Tarea no válido"),
     handleInputErrors,
     validateTaskExists,
