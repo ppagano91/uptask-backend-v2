@@ -13,12 +13,12 @@ const NoteSchema: Schema = new Schema(
             required: true
         },
         createdBy: {
-            types: Types.ObjectId,
+            type: Types.ObjectId,
             ref: "User",
             required: true
         },
         task: {
-            types: Types.ObjectId,
+            type: Types.ObjectId,
             ref: "Task",
             required: true
         }
