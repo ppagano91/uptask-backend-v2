@@ -59,26 +59,13 @@ export class ProjectController {
     }
 
     static updateProject = async (req: Request, res: Response) => {
-        const { id } = req.params;
         try {
-            const project = await Project.findById(id);
+            req.project.projectName = req.body.projectName;
+            req.project.clientName = req.body.clientName;
+            req.project.description = req.body.description;
 
-            if(!project){
-                const error = new Error(`Proyecto con id=${id} no encontrado`)
-                return res.status(404).json({error: error.message})
-            }
-
-            if(project.manager.toString() !== req.user.id.toString()){
-                const error = new Error(`No tiene permiso para actualizar el proyecto`);
-                return res.status(401).json({error: error.message});
-            }
-
-            project.projectName = req.body.projectName;
-            project.clientName = req.body.clientName;
-            project.description = req.body.description;
-
-            await project.save();
-            res.json({"msg": `Proyecto con id=${id} actualizado`});
+            await req.project.save();
+            res.json({"msg": `Proyecto actualizado`});
         } catch (error) {
             console.log(error);
             res.status(500).json({"msg": error});
@@ -86,22 +73,9 @@ export class ProjectController {
     }
 
     static deleteProjectById = async (req: Request, res: Response) => {
-        const { id } = req.params;
         try {
-            const project = await Project.findById(id);
-
-            if(!project){
-                const error = new Error(`Proyecto con id=${id} no encontrado`);
-                return res.status(404).json({error: error.message});
-            }
-
-            if(project.manager.toString() !== req.user.id.toString()){
-                const error = new Error(`No tiene permiso para eliminar el proyecto`);
-                return res.status(401).json({error: error.message});
-            }
-
-            await project.deleteOne();
-            res.json({"msg": `Proyecto con id=${id} fue eliminado`});
+            await req.project.deleteOne();
+            res.json({"msg": `Proyecto eliminado`});
         } catch (error) {
             console.log(error);
             res.status(500).json({"msg": error});
