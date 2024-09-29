@@ -1,0 +1,13 @@
+[
+    {
+        "e-mail": "john.doe@example.com",
+        "id_user": "668fc6fac9d72dbf49d24b63",
+        "jwt":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGZjNmZhYzlkNzJkYmY0OWQyNGI2MyIsImlhdCI6MTcyMDY5ODgzOCwiZXhwIjoxNzIwNzg1MjM4fQ.AR7sEqiTP3kEx_kBuGegCFXJ6U3HiSWeS7Jyej5guQQ"
+    },
+    {
+        "e-mail": "desarrollo.ppagano91@gmail.com",
+        "id_user": "668ca9fbcc0fbf20714151ce",
+        "jwt":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2OGNhOWZiY2MwZmJmMjA3MTQxNTFjZSIsImlhdCI6MTcyMDY1NDcwOCwiZXhwIjoxNzIwNzQxMTA4fQ.KEYprLMsGURSPNfjmj-y0u9bGXTHQryKspsIDHpT_LE"
+    }
+    
+    ]
