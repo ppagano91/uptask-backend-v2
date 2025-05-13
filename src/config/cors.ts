@@ -1,16 +1,21 @@
 import { CorsOptions } from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
- 
+
 export const corsConfig: CorsOptions = {
-  origin: function (origin, callback) {
-    const whiteList = [process.env.FRONTEND_URL];
-    const allowUndefined = process.env.NODE_ENV === 'production';
-    if (whiteList.includes(origin) || (allowUndefined && origin === undefined)) {
+
+  origin: (origin, callback) => {
+    const whitelist = [process.env.FRONTEND_URL];
+
+    if (process.argv[2] === '--api') {
+      whitelist.push(undefined, null);
+    }
+
+    if (!origin || whitelist.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error(`Error de CORS -> origin: ${origin} - whitelist: ${whiteList.join(', ')}`));
+      callback(new Error(`Error de CORS -> origin: ${origin} - whitelist: ${whitelist.join(', ')}`));
     }
   },
-  credentials: true,
+
 };
