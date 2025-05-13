@@ -1,16 +1,15 @@
 {
-  "compilerOptions": {
-    "outDir": "./dist",
-    "rootDir": "./src",
-    "lib": ["esnext", "dom"],
-    "target": "ESNext",
-    "moduleResolution": "NodeNext",
-    "module": "NodeNext",
-    "strict": true,
-    "sourceMap": true,
-    "esModuleInterop": true,
-    "declaration": true,
-    "jsx": "react-jsx"  // Esto es importante para los proyectos que usan JSX
-  },
-  "include": ["src/**/*.ts", "src/**/*.tsx"] // Asegúrate de incluir también archivos .tsx si usas React
+    "compilerOptions": {
+        "outDir": "./dist",
+        "rootDir": "./src",
+        "lib": ["esnext"],
+        "target": "ESNext",
+        "moduleResolution": "NodeNext",
+        "module": "NodeNext",
+        "strict": false,
+        "sourceMap": true,
+        "esModuleInterop": true,
+        "declaration": true
+    },
+    "include": ["src/**/*.ts"]
 }
