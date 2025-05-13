@@ -3,19 +3,15 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export const corsConfig: CorsOptions = {
-
-  origin: (origin, callback) => {
-    const whitelist = [process.env.FRONTEND_URL];
-
-    if (process.argv[2] === '--api') {
-      whitelist.push(undefined, null);
+  origin: function (origin, callback) {
+    const whiteList = [process.env.FRONTEND_URL];
+    if (process.argv[2] == '--api') {
+      whiteList.push(undefined);
     }
-
-    if (!origin || whitelist.includes(origin)) {
+    if (whiteList.includes(origin)) {
       callback(null, true);
     } else {
-      callback(new Error(`Error de CORS -> origin: ${origin} - whitelist: ${whitelist.join(', ')}`));
+      callback(new Error(`Error de CORS -> origin: ${origin} - whitelist: ${process.env.FRONTEND_URL}`));
     }
   },
-
 };
