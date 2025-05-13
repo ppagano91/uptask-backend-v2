@@ -5,14 +5,12 @@ dotenv.config();
 export const corsConfig: CorsOptions = {
   origin: function (origin, callback) {
     const whiteList = [process.env.FRONTEND_URL];
-    console.log(">>",process.env.FRONTEND_URL); 
-    if (process.argv[2] == '--api') {
-      whiteList.push(undefined);
-    }
-    if (whiteList.includes(origin)) {
+    const allowUndefined = process.env.NODE_ENV === 'production';
+    if (whiteList.includes(origin) || (allowUndefined && origin === undefined)) {
       callback(null, true);
     } else {
-      callback(new Error(`Error de CORS -> origin: ${origin} - whitelist: ${process.env.FRONTEND_URL}`));
+      callback(new Error(`Error de CORS -> origin: ${origin} - whitelist: ${whiteList.join(', ')}`));
     }
   },
+  credentials: true,
 };
