@@ -2,7 +2,7 @@ import { CorsOptions } from 'cors';
 import dotenv from 'dotenv';
 dotenv.config();
 
-export const corsOptions = {
+export const corsConfig: CorsOptions = {
   origin: function (origin, callback) {
     const whiteList = [process.env.FRONTEND_URL];
     if (!origin || whiteList.includes(origin)) {
